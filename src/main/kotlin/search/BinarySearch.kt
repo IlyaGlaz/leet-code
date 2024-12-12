@@ -1,8 +1,4 @@
-fun main() {
-    val list = listOf(1, 4, 20, 205, 206, 207, 500)
-
-    println(binarySearch(list, 20))
-}
+package search
 
 fun <A : Comparable<A>> binarySearch(list: List<A>, target: A): Int {
     var start = 0
@@ -22,4 +18,10 @@ fun <A : Comparable<A>> binarySearch(list: List<A>, target: A): Int {
     }
 
     return -1
+}
+
+fun main() {
+    val list = listOf(1, 4, 20, 205, 206, 207, 500)
+
+    println(binarySearch(list, 20))
 }
