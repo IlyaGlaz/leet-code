@@ -9,25 +9,23 @@ package linkedlist
  *
  * Return true if there is a cycle in the linked list. Otherwise, return false.
  */
-class Solution {
-    fun hasCycle(head: ListNode?): Boolean {
-        if (head == null) {
-            return false
-        }
-
-        var slow = head
-        var fast = head
-
-        while (fast!!.next != null && fast.next!!.next != null ) {
-            fast = fast.next!!.next
-            slow = slow!!.next
-
-            if (fast == slow)
-                return true
-        }
-
+fun hasCycle(head: ListNode?): Boolean {
+    if (head == null) {
         return false
     }
+
+    var slow = head
+    var fast = head
+
+    while (fast!!.next != null && fast.next!!.next != null) {
+        fast = fast.next!!.next
+        slow = slow!!.next
+
+        if (fast == slow)
+            return true
+    }
+
+    return false
 }
 
 class ListNode(var value: Int) {
