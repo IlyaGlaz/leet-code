@@ -12,15 +12,28 @@ package linkedlist
  * }
  */
 fun reverseList(head: ListNode?): ListNode? {
-    var prev: ListNode?
-    var current = head
+    var curr = head
+    var prev: ListNode? = null
 
-    while (current != null) {
-        var nxt = head!!.next
-        prev = head!!.next
-        current = prev
-        nxt = current
+    while (curr != null) {
+        val nextTemp = curr.next
+        curr.next = prev
+        prev = curr
+        curr = nextTemp
     }
 
-    return head
+    return prev
+}
+
+fun reverseListRec(head: ListNode?): ListNode? {
+    var curr = head
+    var prev: ListNode? = null
+
+    if (curr == null) return prev
+
+    val nextTemp = curr.next
+    curr.next = prev
+    prev = curr
+
+    return reverseList(nextTemp)
 }

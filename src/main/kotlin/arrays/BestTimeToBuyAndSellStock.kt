@@ -10,18 +10,16 @@ import java.lang.Integer.min
  *
  * Return the maximum profit you can achieve from this transaction. If you cannot achieve any profit, return 0.
  */
-class Solution {
-    fun maxProfit(prices: IntArray): Int {
-        var maxProfit = 0
-        var currentMin = prices[0]
+fun maxProfit(prices: IntArray): Int {
+    var maxProfit = 0
+    var currentMin = prices[0]
 
-        for (i in prices.indices) {
-            var price = prices[i]
+    for (i in prices.indices) {
+        var price = prices[i]
 
-            maxProfit = max(maxProfit, price - currentMin)
-            currentMin = min(currentMin, price)
-        }
-
-        return maxProfit
+        maxProfit = max(maxProfit, price - currentMin)
+        currentMin = min(currentMin, price)
     }
+
+    return maxProfit
 }
