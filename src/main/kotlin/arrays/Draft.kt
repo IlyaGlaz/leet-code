@@ -1,7 +1,6 @@
 package arrays
 
 import java.lang.Integer.max
-import java.lang.Integer.min
 
 fun twoSumD(nums: IntArray, target: Int): IntArray {
     val memo = mutableMapOf<Int, Int>()
@@ -73,6 +72,20 @@ fun searchInsert(nums: IntArray, target: Int): Int {
     return left
 }
 
+fun maxSubArrayD(nums: IntArray): Int {
+    var maxSum = nums[0]
+    var curSum = nums[0]
+
+    for (i in 1..nums.lastIndex) {
+        val num = nums[i]
+
+        curSum = max(curSum + num, num)
+        maxSum = max(maxSum, curSum)
+    }
+
+    return maxSum
+}
+
 fun main() {
-    println(searchInsert(intArrayOf(1, 4), 5))
+    println(maxSubArrayD(intArrayOf(-2, 1, -3, 4, -1, 2, 1, -5, 4)))
 }

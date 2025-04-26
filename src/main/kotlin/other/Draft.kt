@@ -16,6 +16,22 @@ fun isPalindromeD(x: Int): Boolean {
     return inverted == x
 }
 
+fun climbStairsD(n: Int): Int {
+    if (n == 1) {
+        return 1
+    }
+
+    var first = 1
+    var second = 2
+
+    for (i in 3..n) {
+        val sum = first + second
+        second = sum.also { first = second }
+    }
+
+    return second
+}
+
 fun main() {
-    println(0 % 10)
+    println(climbStairsD(4))
 }
