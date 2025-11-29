@@ -86,6 +86,84 @@ fun maxSubArrayD(nums: IntArray): Int {
     return maxSum
 }
 
+/**
+ * [1,1,0,1,1,1]
+ * [1,1,1,1]
+ * [1]
+ * [1,0]
+ * [1,1,1,1,0]
+ * [1,1,1,1,0,0,1,1,1,1,1]
+ */
+fun maxSubArrayOfOnes(nums: IntArray): Int {
+    var curr = 0
+    var prev = 0
+    var max = 0
+
+    if (nums.size < 2) {
+        return 0
+    }
+
+    for (i in 0..nums.lastIndex) {
+        val num = nums[i]
+
+        if (num == 1) {
+            curr++
+        }
+
+        if (num == 0 || i == nums.lastIndex) {
+            max = max(max, max(curr, prev + curr))
+            prev = curr
+            curr = 0
+        }
+
+        if (i == nums.lastIndex && max == nums.size) {
+            max--
+        }
+    }
+
+    return max
+}
+
+fun longestCommonPrefix(strs: Array<String>): String {
+    var result = ""
+
+    for (i in strs[0].indices) {
+        for (s in strs) {
+            if (i == s.length || strs[0][i] != s[i]) {
+                return result
+            }
+        }
+        result += strs[0][i]
+    }
+
+    return result
+}
+
+fun mergeD(nums1: IntArray, m: Int, nums2: IntArray, n: Int): Unit {
+    var n1 = m - 1
+    var n2 = n - 1
+    var last = m + n - 1
+
+    while (n2 >= 0 && n1 >= 0) {
+        if (nums2[n2] > nums1[n1]) {
+            nums1[last] = nums2[n2]
+            n2--
+        } else {
+            nums1[last] = nums1[n1]
+            n1--
+        }
+        last--
+    }
+
+    while (n2 >= 0) {
+        nums1[last] = nums2[n2]
+        last--
+        n2--
+    }
+
+    println(nums1.joinToString(","))
+}
+
 fun main() {
-    println(maxSubArrayD(intArrayOf(-2, 1, -3, 4, -1, 2, 1, -5, 4)))
+    mergeD(intArrayOf(2, 4, 6, 8, 0, 0, 0, 0), 4, intArrayOf(1, 5, 7, 9), 4)
 }
