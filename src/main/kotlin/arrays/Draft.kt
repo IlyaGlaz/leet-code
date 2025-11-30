@@ -43,15 +43,17 @@ fun bubbleSort(nums: IntArray): IntArray {
 }
 
 fun removeElementD(nums: IntArray, value: Int): Int {
-    var f = 0
+    var k = 0
 
-    for (s in nums.indices) {
-        if (nums[s] != value) {
-            nums[f++] = nums[s]
+    for (j in nums.indices) {
+        val num = nums[j]
+
+        if (num != value) {
+            nums[k++] = num
         }
     }
 
-    return f
+    return k
 }
 
 fun searchInsert(nums: IntArray, target: Int): Int {
@@ -165,5 +167,5 @@ fun mergeD(nums1: IntArray, m: Int, nums2: IntArray, n: Int): Unit {
 }
 
 fun main() {
-    mergeD(intArrayOf(2, 4, 6, 8, 0, 0, 0, 0), 4, intArrayOf(1, 5, 7, 9), 4)
+    println(removeElementD(intArrayOf(3), 3))
 }
